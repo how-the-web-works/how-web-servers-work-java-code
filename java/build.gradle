@@ -15,7 +15,6 @@ subprojects { p ->
     }
 
     p.application {
-        executableDir = p.projectDir
         mainClassName = projectMainClassName
     }
 
