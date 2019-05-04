@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Runs an application from a specific project
 
