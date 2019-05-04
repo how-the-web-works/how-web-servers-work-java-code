@@ -3,7 +3,8 @@ import java.nio.file.Paths
 rootProject.name= 'how-the-web-works-server-side'
 
 def rootPath = rootDir.toPath()
-rootDir.eachDirRecurse { dir ->
+
+new File('java').eachDirRecurse { dir ->
     if (dir.canonicalPath.endsWith('src/main/java')) {
         def path = Paths.get(dir.parentFile.parentFile.parentFile.canonicalPath)
         include rootPath.relativize(path).toString().replace("/", ":")
