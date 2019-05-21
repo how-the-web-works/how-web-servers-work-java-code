@@ -8,12 +8,9 @@ public class DataFile {
 
     private static final String ROOT_DIRECTORY = "how-the-web-works-server-side";
 
-    private final String fileName;
     private final File file;
 
     public DataFile(String fileName) throws IOException {
-        this.fileName = fileName;
-
         File dir = new File(".").getAbsoluteFile();
         do {
             if (!dir.getCanonicalPath().contains(ROOT_DIRECTORY)) {
