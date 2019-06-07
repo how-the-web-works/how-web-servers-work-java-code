@@ -12,7 +12,7 @@ public class ZipCodeLookupMain {
     private static List<AddressGroup> addressGroups;
 
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.console().reader());
         while (true) {
             System.out.println("What do you want to do?");
             System.out.println(" Q (or q) - to quit");

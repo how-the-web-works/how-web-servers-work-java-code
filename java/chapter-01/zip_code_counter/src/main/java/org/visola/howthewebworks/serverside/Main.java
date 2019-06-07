@@ -1,6 +1,9 @@
 package org.visola.howthewebworks.serverside;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Map.Entry;
@@ -12,7 +15,8 @@ public class Main {
 
     public static void main(String [] args) throws Exception {
         DataFile dataFile = new DataFile("city_of_boston.csv");
-        try (CSVReader reader = new CSVReader(new FileReader(dataFile.getFile()))) {
+        Reader fileReader = new InputStreamReader(new FileInputStream(dataFile.getFile()), StandardCharsets.UTF_8);
+        try (CSVReader reader = new CSVReader(fileReader)) {
             String [] line;
             Map<String, Integer> countsByZipCode = new TreeMap<>();
             while ((line = reader.readRecord()) != null) {
