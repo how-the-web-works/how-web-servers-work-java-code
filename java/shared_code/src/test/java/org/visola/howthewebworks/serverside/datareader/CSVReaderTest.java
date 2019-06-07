@@ -2,6 +2,7 @@ package org.visola.howthewebworks.serverside.datareader;
 
 import java.io.BufferedReader;
 import java.io.StringReader;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -30,10 +31,10 @@ public class CSVReaderTest {
         StringReader reader = new StringReader(data.toString());
 
         try (CSVReader csvReader = new CSVReader(reader)) {
-            String [] header = csvReader.getHeader();
-            assertThat(header[0]).isEqualTo("id");
-            assertThat(header[1]).isEqualTo("name");
-            assertThat(header[2]).isEqualTo("age");
+            List<String> header = csvReader.getHeader();
+            assertThat(header.get(0)).isEqualTo("id");
+            assertThat(header.get(1)).isEqualTo("name");
+            assertThat(header.get(2)).isEqualTo("age");
 
             String [] record = null;
             int counter = 0;

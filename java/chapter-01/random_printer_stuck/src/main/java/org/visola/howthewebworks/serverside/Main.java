@@ -23,7 +23,7 @@ public class Main {
         Random random = new Random();
         while (true) { // Infinite loop
             int next = random.nextInt(1000);
-            System.out.printf("Next random number was: %d\n", next);
+            System.out.printf("Next random number was: %d%n", next);
             Thread.sleep(1000);
         }
     }

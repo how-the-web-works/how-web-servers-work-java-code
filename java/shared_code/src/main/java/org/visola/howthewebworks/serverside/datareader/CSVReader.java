@@ -3,11 +3,14 @@ package org.visola.howthewebworks.serverside.datareader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
+
+import com.google.common.collect.ImmutableList;
 
 public class CSVReader implements AutoCloseable  {
 
     private final BufferedReader reader;
-    private final String [] header;
+    private final List<String> header;
 
     public CSVReader(Reader readFrom) throws IOException {
         this(readFrom, true);
@@ -23,12 +26,12 @@ public class CSVReader implements AutoCloseable  {
         if (hasHeader) {
             String firstLine = this.reader.readLine();
             if (firstLine != null) {
-                header = firstLine.split(",");
+                header = ImmutableList.copyOf(firstLine.split(","));
             } else {
-                header = new String[0];
+                header = ImmutableList.of();
             }
         } else {
-            header = new String[0];
+            header = ImmutableList.of();
         }
     }
 
@@ -36,7 +39,7 @@ public class CSVReader implements AutoCloseable  {
         this.reader.close();
     }
 
-    public String[] getHeader() {
+    public List<String> getHeader() {
         return this.header;
     }
 

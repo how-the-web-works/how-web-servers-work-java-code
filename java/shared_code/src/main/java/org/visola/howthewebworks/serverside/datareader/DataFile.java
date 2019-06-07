@@ -41,7 +41,12 @@ public class DataFile {
      * @return Optional with the data directory if found, empty otherwise.
      */
     private Optional<File> findDataDir(File dir) {
-        for (File fileInDir : dir.listFiles()) {
+        File [] filesInDir = dir.listFiles();
+        if (filesInDir == null) {
+            return Optional.empty();
+        }
+
+        for (File fileInDir : filesInDir) {
             if (fileInDir.isDirectory() && fileInDir.getName().equals("data")) {
                 return Optional.of(fileInDir);
             }

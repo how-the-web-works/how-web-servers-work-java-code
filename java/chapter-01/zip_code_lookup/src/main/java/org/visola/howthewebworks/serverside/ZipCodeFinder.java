@@ -3,6 +3,7 @@ package org.visola.howthewebworks.serverside;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.visola.howthewebworks.serverside.datareader.addressgroup.AddressGroup;
@@ -37,10 +38,10 @@ public class ZipCodeFinder {
 
     private void printZipCodeInfo(Map<String, List<AddressGroup>> groupsByZipCode) {
         int total = 0;
-        for (String zipCode : groupsByZipCode.keySet()) {
-            int countInZipCode = groupsByZipCode.get(zipCode).size();
+        for (Entry<String, List<AddressGroup>> entry : groupsByZipCode.entrySet()) {
+            int countInZipCode = entry.getValue().size();
             total += countInZipCode;
-            System.out.printf("- %d address groups in %s%n", countInZipCode, zipCode);
+            System.out.printf("- %d address groups in %s%n", countInZipCode, entry.getKey());
         }
         System.out.printf("%d total address groups found%n%n", total);
     }
