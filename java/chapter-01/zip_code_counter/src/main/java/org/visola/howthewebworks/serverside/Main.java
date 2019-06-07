@@ -28,7 +28,7 @@ public class Main {
 
             System.out.println("ZIP_CODE,COUNT");
             for (Entry<String, Integer> entry : countsByZipCode.entrySet()) {
-                System.out.printf("%s,%d\n", entry.getKey(), entry.getValue());
+                System.out.printf("%s,%d%n", entry.getKey(), entry.getValue());
             }
         }
     }
