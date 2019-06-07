@@ -2,9 +2,7 @@ package org.visola.howthewebworks.serverside;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.visola.howthewebworks.serverside.datareader.addressgroup.AddressGroup;
@@ -34,16 +32,10 @@ public class ZipCodeFinder {
             return;
         }
 
-        Optional<String> maybeExplore = printAndPickZipCode(groupsByZipCode);
-        if (!maybeExplore.isPresent()) {
-            System.out.println();
-            return;
-        }
-
-        System.out.printf("Exploring %s%n%n", maybeExplore.get());
+        printZipCodeInfo(groupsByZipCode);
     }
 
-    private Optional<String> printAndPickZipCode(Map<String, List<AddressGroup>> groupsByZipCode) {
+    private void printZipCodeInfo(Map<String, List<AddressGroup>> groupsByZipCode) {
         int total = 0;
         for (String zipCode : groupsByZipCode.keySet()) {
             int countInZipCode = groupsByZipCode.get(zipCode).size();
@@ -51,15 +43,6 @@ public class ZipCodeFinder {
             System.out.printf("- %d address groups in %s%n", countInZipCode, zipCode);
         }
         System.out.printf("%d total address groups found%n%n", total);
-
-        System.out.println("Type a zipcode to explore or [Enter] to leave: ");
-        String zipCode = scanner.nextLine();
-
-        if (groupsByZipCode.containsKey(zipCode)) {
-            return Optional.of(zipCode);
-        }
-
-        return Optional.empty();
     }
 
 }
