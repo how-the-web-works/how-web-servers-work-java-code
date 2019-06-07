@@ -2,9 +2,17 @@ subprojects { p ->
     apply plugin: 'java'
     apply plugin: 'application'
     apply plugin: 'jacoco'
+    apply plugin: 'findbugs'
 
     repositories {
         mavenCentral()
+    }
+
+    tasks.withType(FindBugs) {
+        reports {
+            xml.enabled false
+            html.enabled true
+        }
     }
 
     def projectPath = projectDir.toPath()
