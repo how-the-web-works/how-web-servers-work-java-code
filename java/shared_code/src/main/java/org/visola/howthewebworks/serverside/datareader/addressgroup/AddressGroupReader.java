@@ -1,7 +1,10 @@
 package org.visola.howthewebworks.serverside.datareader.addressgroup;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +21,7 @@ public class AddressGroupReader {
 
     public List<AddressGroup> readAddressGroups() throws IOException {
         long start = System.currentTimeMillis();
-        FileReader fileReader = new FileReader(dataFile.getFile());
+        Reader fileReader = new InputStreamReader(new FileInputStream(dataFile.getFile()), StandardCharsets.UTF_8);
 
         List<AddressGroup> result = new ArrayList<>();
         try (CSVReader csvReader = new CSVReader(fileReader)) {
@@ -28,7 +31,7 @@ public class AddressGroupReader {
             }
         }
 
-        System.out.printf("Read zip codes in %dms\n", System.currentTimeMillis() - start);
+        System.out.printf("Read zip codes in %dms%n", System.currentTimeMillis() - start);
         return result;
     }
 
