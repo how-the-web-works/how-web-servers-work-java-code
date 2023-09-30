@@ -1,3 +1,3 @@
 ### Data files
 
-- city_of_boston.csv - I do not remember where I got this file, if you know, please add reference here.
+- city_of_boston.csv - List of addresses with zip code, latitude and longitude downloaded from https://results.openaddresses.io/
