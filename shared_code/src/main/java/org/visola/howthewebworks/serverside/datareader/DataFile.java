@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class DataFile {
 
-    private static final String ROOT_DIRECTORY = "how-the-web-works-java-code";
+    private static final String ROOT_DIRECTORY = "how-web-servers-work-java-code";
 
     private final File file;
 
